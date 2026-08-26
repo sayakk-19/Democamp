@@ -1,0 +1,6 @@
+.env
+football/football
+football/store/admin.py
+football/store/urls.py
+football/store/views.py
+football/store/models.py

@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <style>
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            table{
+                height: 25%;
+                width: 50%;
+            }
+            th, td{
+                text-align: center;
+                border: 1px solid black;
+                transition: all 500ms ease;
+            }
+            /* [data-operations="crud"] a{
+                color: rgb(13, 9, 2);
+                background: linear-gradient(to right, rgba(255, 255, 0, 0.434), rgba(5, 49, 146, 0.851), green, rgba(255, 255, 0, 0.555));
+            } */
+            [data-operations="crud"]:hover{
+                color: aliceblue;
+                background: linear-gradient(to right, black, green, yellow);
+                transition: all 500ms ease;
+            }
+            [data-operations="crud"] a:hover{
+                color: aliceblue;
+                transition: all 500ms ease;
+                /* background-color: ; */
+            }
+            
+        </style>
+    </head>
+    <body>
+        <table style="border: 1px solid black;">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone No.</th>
+                <th>Password</th>
+                <th>Age</th>
+                <th>Position</th>
+                <th colspan="3">CRUD Operations
+                    & Approval Status
+                </th>
+            </tr>
+            {% for i in a %}
+            <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.phno}}</td>
+                <td>{{i.pwd}}</td>
+                <td>{{i.age}}</td>
+                <td>{{i.position}}</td>
+                <td data-operations="crud"><a style="text-decoration: none;" href="edit/{{i.id}}">Edit</a></td>
+                <td data-operations="crud"><a style="text-decoration: none;" href="delete/{{i.id}}">Delete</a></td>
+                <td data-operations="crud">
+                {% if i.appr == 1 %}
+                    Approved
+                {% else %}
+                    <a style="text-decoration: none;" href="apr/{{i.id}}">Approve</a>
+                {% endif %}    
+                </td>
+            </tr>
+            {% endfor %}  
+        </table>
+    </body>
+</html>

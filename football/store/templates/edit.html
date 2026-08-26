@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <form action="../update/{{a.id}}">
+            {% csrf_token %}
+            <label for="a1">Name</label>
+            <input type="text" name="a1" value="{{a.name}}">
+            <label for="a2">Email Address</label>
+            <input type="email" name="a2" value="{{a.email}}">
+            <label for="a3">Phone Number</label>
+            <input type="number" name="a3" value="{{a.phno}}">
+            <label for="a4">Password</label>
+            <input type="password" name="a4" value="{{a.pwd}}">
+            <label for="a5">Age</label>
+            <input type="number" name="a5" value="{{a.age}}">
+            <label for="a6">Position</label>
+            <input type="text" name="a6" value="{{a.position}}">
+            <input type="submit">
+        </form>
+    </body>
+</html>

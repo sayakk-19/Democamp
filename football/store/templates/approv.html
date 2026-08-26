@@ -1,0 +1,22 @@
+<html>
+    <body>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Age</td>
+                <!-- <td>Conformation</td> -->
+                <td>Approve</td>
+            </tr>
+            {% for i in a %}
+            <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.age}}</td>
+                <!-- <td>{{i.appr}}</td> -->
+                <td><a href="apr/{{i.id}}">Approve</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
