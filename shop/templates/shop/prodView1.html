@@ -1,0 +1,738 @@
+{% extends 'shop/basic1.html' %}
+
+{% block title %}
+{{ product.product_name }} - My Awesome Cart
+{% endblock %}
+
+
+{% block css %}
+
+.product-page {
+background: #f1f3f6;
+padding: 18px 0 50px;
+}
+
+.product-container {
+max-width: 1400px;
+margin: auto;
+}
+
+
+/* BREADCRUMB */
+
+.breadcrumb-area {
+background: white;
+padding: 14px 20px;
+margin-bottom: 12px;
+
+color: #666;
+font-size: 13px;
+}
+
+.breadcrumb-area a {
+color: #2874f0;
+text-decoration: none;
+}
+
+
+/* PRODUCT CARD */
+
+.product-main {
+background: white;
+
+display: grid;
+grid-template-columns: 55% 45%;
+
+min-height: 650px;
+}
+
+
+/* IMAGE AREA */
+
+.product-gallery {
+padding: 25px;
+
+display: grid;
+grid-template-columns: 90px 1fr;
+
+gap: 20px;
+}
+
+.thumbnail-list {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+.thumbnail {
+width: 75px;
+height: 85px;
+
+border: 1px solid #ddd;
+border-radius: 5px;
+
+overflow: hidden;
+
+cursor: pointer;
+
+background: white;
+}
+
+.thumbnail img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+}
+
+.main-image-box {
+background: #f7f7f7;
+
+min-height: 580px;
+
+border-radius: 8px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+position: relative;
+}
+
+.main-image-box img {
+max-width: 90%;
+max-height: 540px;
+
+object-fit: contain;
+
+transition: transform .3s ease;
+}
+
+.main-image-box img:hover {
+transform: scale(1.04);
+}
+
+
+/* PRODUCT INFORMATION */
+
+.product-info {
+padding: 30px 35px;
+}
+
+.product-category {
+color: #878787;
+font-size: 13px;
+
+margin-bottom: 12px;
+}
+
+.product-title {
+font-size: 24px;
+
+line-height: 1.35;
+
+color: #212121;
+
+margin-bottom: 12px;
+}
+
+.rating-row {
+display: flex;
+align-items: center;
+
+gap: 10px;
+
+margin-bottom: 20px;
+}
+
+.rating {
+background: #388e3c;
+
+color: white;
+
+padding: 5px 9px;
+
+border-radius: 4px;
+
+font-size: 13px;
+}
+
+.reviews {
+color: #878787;
+font-size: 13px;
+}
+
+
+/* PRICE */
+
+.price-section {
+border-top: 1px solid #eee;
+border-bottom: 1px solid #eee;
+
+padding: 20px 0;
+
+margin-bottom: 20px;
+}
+
+.current-price {
+font-size: 32px;
+
+font-weight: 700;
+
+color: #212121;
+}
+
+.old-price {
+text-decoration: line-through;
+
+color: #878787;
+
+margin-left: 10px;
+}
+
+.discount {
+color: #388e3c;
+
+font-weight: 700;
+
+margin-left: 10px;
+}
+
+
+/* OFFER */
+
+.offer-box {
+background: #e8f5e9;
+
+border-radius: 5px;
+
+padding: 12px;
+
+color: #2e7d32;
+
+margin-bottom: 25px;
+}
+
+
+/* SIZE */
+
+.size-title {
+font-weight: 600;
+
+margin-bottom: 12px;
+}
+
+.size-options {
+display: flex;
+gap: 10px;
+}
+
+.size-btn {
+width: 55px;
+height: 42px;
+
+background: white;
+
+border: 1px solid #cfcfcf;
+
+border-radius: 5px;
+
+cursor: pointer;
+}
+
+.size-btn:hover,
+.size-btn.selected {
+border: 2px solid #2874f0;
+
+color: #2874f0;
+}
+
+
+/* DELIVERY */
+
+.delivery-box {
+margin-top: 25px;
+
+padding: 15px;
+
+border: 1px solid #eee;
+
+border-radius: 6px;
+}
+
+.delivery-title {
+font-weight: 600;
+
+margin-bottom: 10px;
+}
+
+.delivery-input {
+display: flex;
+gap: 10px;
+}
+
+.delivery-input input {
+width: 150px;
+
+border: 1px solid #ccc;
+
+padding: 9px;
+
+border-radius: 4px;
+}
+
+.check-btn {
+border: none;
+
+background: transparent;
+
+color: #2874f0;
+
+font-weight: 600;
+
+cursor: pointer;
+}
+
+
+/* BUTTONS */
+
+.product-actions {
+display: grid;
+
+grid-template-columns: 1fr 1fr;
+
+gap: 12px;
+
+margin-top: 25px;
+}
+
+.add-cart-btn,
+.buy-now-btn {
+height: 55px;
+
+border: none;
+
+border-radius: 4px;
+
+font-size: 17px;
+
+font-weight: 600;
+
+cursor: pointer;
+}
+
+.add-cart-btn {
+background: #ff9f00;
+
+color: white;
+}
+
+.buy-now-btn {
+background: #fb641b;
+
+color: white;
+}
+
+.add-cart-btn:hover,
+.buy-now-btn:hover {
+opacity: .9;
+}
+
+
+/* DESCRIPTION */
+
+.description-section {
+margin-top: 15px;
+
+background: white;
+
+padding: 25px;
+}
+
+.description-title {
+font-size: 20px;
+
+font-weight: 600;
+
+padding-bottom: 15px;
+
+border-bottom: 1px solid #eee;
+}
+
+.description-text {
+color: #555;
+
+line-height: 1.7;
+
+margin-top: 18px;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width: 900px) {
+
+.product-main {
+grid-template-columns: 1fr;
+}
+
+.product-gallery {
+grid-template-columns: 1fr;
+}
+
+.thumbnail-list {
+flex-direction: row;
+overflow-x: auto;
+}
+
+.product-info {
+padding: 25px;
+}
+}
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class="product-page">
+
+    <div class="product-container">
+
+        <!-- Breadcrumb -->
+
+        <div class="breadcrumb-area">
+
+            <a href="{% url 'ShopHome' %}">
+                Home
+            </a>
+
+            /
+            {{ product.category }}
+            /
+            {{ product.product_name }}
+
+        </div>
+
+
+        <div class="product-main">
+
+
+            <!-- LEFT IMAGE SECTION -->
+
+            <div class="product-gallery">
+
+                <div class="thumbnail-list">
+
+                    <div class="thumbnail">
+                        <img src="/media/{{ product.image }}" onclick="changeImage(this.src)">
+                    </div>
+
+                </div>
+
+
+                <div class="main-image-box">
+
+                    <img id="mainProductImage" src="/media/{{ product.image }}" alt="{{ product.product_name }}">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RIGHT PRODUCT INFORMATION -->
+
+            <div class="product-info">
+
+                <div class="product-category">
+
+                    {{ product.category }}
+
+                </div>
+
+
+                <h1 class="product-title">
+
+                    {{ product.product_name }}
+
+                </h1>
+
+
+                <div class="rating-row">
+
+                    <span class="rating">
+                        ★ 4.3
+                    </span>
+
+                    <span class="reviews">
+                        128 Ratings & Reviews
+                    </span>
+
+                </div>
+
+
+                <div class="price-section">
+
+                    <span class="current-price">
+
+                        ₹{{ product.price }}
+
+                    </span>
+
+                    <span class="old-price">
+
+                        ₹{{ product.price|add:"300" }}
+
+                    </span>
+
+                    <span class="discount">
+
+                        30% off
+
+                    </span>
+
+                </div>
+
+
+                <div class="offer-box">
+
+                    🎁 Special offer: Extra ₹50 off on selected products
+
+                </div>
+
+
+                <!-- SIZE -->
+
+                {% if product.category == "Mens' Jerseys" %}
+
+                <div class="size-title">
+
+                    Select Size
+
+                </div>
+
+                <div class="size-options">
+
+                    <button class="size-btn" onclick="selectSize(this)">
+                        S
+                    </button>
+
+                    <button class="size-btn" onclick="selectSize(this)">
+                        M
+                    </button>
+
+                    <button class="size-btn" onclick="selectSize(this)">
+                        L
+                    </button>
+
+                    <button class="size-btn" onclick="selectSize(this)">
+                        XL
+                    </button>
+
+                    <button class="size-btn" onclick="selectSize(this)">
+                        XXL
+                    </button>
+
+                </div>
+
+                {% endif %}
+
+                <!-- DELIVERY -->
+
+                <div class="delivery-box">
+
+                    <div class="delivery-title">
+
+                        🚚 Delivery details
+
+                    </div>
+
+                    <div class="delivery-input">
+
+                        <input type="text" id="pincode" placeholder="Enter Pincode">
+
+                        <button class="check-btn" onclick="checkDelivery()">
+                            Check
+                        </button>
+
+                    </div>
+
+                    <p id="deliveryMessage"></p>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="product-actions">
+
+                    <button class="btn btn-primary /*add-cart-btn*/" onclick="addProductToCart()">
+                        🛒 ADD TO CART
+                    </button>
+
+                    <button class="buy-now-btn" onclick="buyNow()">
+                        BUY NOW
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="description-section">
+
+            <div class="description-title">
+
+                Product Description
+
+            </div>
+
+            <div class="description-text">
+
+                {{ product.desc }}
+
+            </div>
+
+        </div>
+
+        <div class="description-section">
+
+            <div class="description-title">
+
+                Product Features
+
+            </div>
+
+            <div class="description-text">
+
+                Complete football kit including jersey, shorts, and socks
+                Bold black and blue striped design
+                Matching black shorts with contrasting gold-tone details
+                Coordinated black socks with blue cuffs
+                Lightweight, sporty design suitable for football, training, and casual wear
+                Comfortable athletic fit designed for ease of movement
+                Stylish team-inspired detailing for a professional football look
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+
+{% block js %}
+
+<script>
+
+    if (localStorage.getItem('cart') == null) {
+        var cart = {};
+    }
+
+    else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        document.getElementById('cart').innerHTML = Object.keys(cart).length;
+    }
+
+    $('.cart').click(function () {
+
+        console.log('clicked');
+        var idstr = this.id.toString();
+        console.log(idstr);
+        if (cart[idstr] != undefined) {
+            cart[idstr] = cart[idstr] + 1;
+        }
+        else {
+            cart[idstr] = 1;
+        }
+        console.log(cart);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById('cart').innerHTML = Object.keys(cart).length;
+    });
+    $('#popcart').popover();
+
+    document.getElementById("popcart").setAttribute('data-content', '<h5>Cart for your items in my shopping cart</h5>');
+
+    function changeImage(src) {
+
+        document.getElementById(
+            "mainProductImage"
+        ).src = src;
+
+    }
+
+
+    function selectSize(button) {
+
+        document
+            .querySelectorAll(".size-btn")
+            .forEach(function (btn) {
+
+                btn.classList.remove("selected");
+
+            });
+
+        button.classList.add("selected");
+
+    }
+
+
+    function checkDelivery() {
+
+        let pincode =
+            document.getElementById("pincode").value;
+
+        let message =
+            document.getElementById("deliveryMessage");
+
+        if (pincode.length === 6) {
+
+            message.innerHTML =
+                "✓ Delivery available to this location.";
+
+            message.style.color = "#388e3c";
+
+        } else {
+
+            message.innerHTML =
+                "Please enter a valid 6-digit pincode.";
+
+            message.style.color = "#d32f2f";
+
+        }
+
+    }
+
+
+    // function addProductToCart() {
+
+    //     // alert(
+    //     //     "Product added to your cart!"
+    //     // );
+
+    // }
+
+    function buyNow() {
+
+        // alert(
+        //     "Buy Now clicked!"
+        // );
+        // let buynow = document.querySelector("buy-now-btn")
+        // buynow.addEventListener('click', ()=>{
+        //     window.href.location= "https://paytm.me/PYTMPS/xtCfY6P"
+        // })
+
+    }
+
+</script>
+
+{% endblock %}

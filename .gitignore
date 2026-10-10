@@ -1,5 +1,9 @@
+*.pyc
+__pycache__/
+.vscode/
 .env
 football/football
+football/settings.py
 football/store/admin.py
 football/store/urls.py
 football/store/views.py
