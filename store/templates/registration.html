@@ -105,7 +105,7 @@
         <p>Please sign up to continue</p>
       </div>
 
-      <form class="login-form" id="loginForm" novalidate method="POST" action="registration">
+      <form class="login-form" id="loginForm" novalidate method="POST" action="registration" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
           <div class="input-group neu-input">

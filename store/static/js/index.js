@@ -3,7 +3,7 @@
 // search.addEventListener("click", ()=>{
 //     search.innerHTML = '<input type="search" placeholder="Search here...">'
 // })
-console.log("====== SCRIPT START ======");
+// console.log("====== SCRIPT START ======");
 
 try {
     const rememberMe = document.querySelector(".remember-wrapper #remember");
@@ -102,7 +102,7 @@ try {
     let span_ph_error = document.querySelector("#phnoError")
 
     form_submit.addEventListener("submit", (e) => {
-        console.log("Submit clicked");
+        // console.log("Submit clicked");
         e.preventDefault()
 
         let valid = true
@@ -137,14 +137,14 @@ try {
                 })
             }
             // document.querySelector(".login-card").appendChild('success_msg')
-            console.log("Passwords match, forcing Django submit...")
+            // console.log("Passwords match, forcing Django submit...")
             // window.location.href = "../../store/index1.html"
             form_submit.submit()
         }
     })
 
 
-    console.log("====== SCRIPT LOADED SUCCESSFULLY ======");
+    // console.log("====== SCRIPT LOADED SUCCESSFULLY ======");
 
     // let success_page = document.querySelector(".social-login")
 

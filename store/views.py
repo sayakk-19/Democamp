@@ -5,7 +5,10 @@ import re
 from django.db.models import Q
 from django.http import HttpResponse
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
 from store.models import *
+
 # Create your views here.
 def test(request):
     return HttpResponse('Testing the page...')
@@ -37,16 +40,33 @@ def indexcode(request):
     if request.method == 'POST':
         a = request.POST['email']
         b = request.POST['pwd']
-        if Register.objects.filter(email=a, pwd=b, appr=1):
-            messages.success(request,'You are successfully logged in')
-            return render(request,'welcome.html')
-        elif Register.objects.filter(email = a).filter(~Q(pwd=b)).exists():
-            messages.error(request, "Please provide correct password")
-            return render(request,'index1.html')
+
+        # if Register.objects.filter(email=a, pwd=b, appr=1):
+        #     messages.success(request,'You are successfully logged in')
+        #     return render(request,'welcome.html')
+        # elif Register.objects.filter(email = a).filter(~Q(pwd=b)).exists():
+        #     messages.error(request, "Please provide correct password")
+        #     return render(request,'index1.html')
+        # else:
+        #     messages.error(request,'Please provide the valid credentials to proceed further...')
+        #     return render(request,'index1.html')
+        
+        if not Register.objects.filter(email=a):
+            messages.error(request, 'Invalid username')
+            return render(request, 'index1.html')
+        
+        user = authenticate(email = a, pwd = b)
+
+        if user is None:
+            messages.error(request, 'Please provide correct password')
+            return render(request, 'index1.html')
         else:
-            messages.error(request,'Please provide the valid credentials to proceed further...')
-            return render(request,'index1.html')
-    return HttpResponse("404 - Not Found")    
+            login(request, user)
+            messages.success(request, 'You are successfully logged in')
+            return render(request, 'welcome.html')
+        
+    return HttpResponse("404 - Not Found")
+   
 def registration(request):
     print("====== REGISTRATION VIEW TRIGGERED ======")
     print(f"Method Type: {request.method}")
@@ -84,10 +104,12 @@ def registration(request):
 
             return render(request, 'registration.html')
         try:
-            regi = Register(name=name, email=email, phno=phno, pwd=pwd, reenter_pwd=reenter_pwd, age=age, position=position, appr=0)
+            regi = Register(name=name, email=email, phno=phno, age=age, position=position, appr=0)
+            regi.pwd = make_password(pwd)
+            regi.reenter_pwd = make_password(reenter_pwd)
             regi.full_clean()
             regi.save()
-            print("====== DATA SAVED TO DATABASE ======")
+            # print("====== DATA SAVED TO DATABASE ======")
             messages.success(request,'You are successfully registered')
             return render(request, 'index1.html')
 
