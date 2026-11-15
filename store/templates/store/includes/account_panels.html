@@ -1,0 +1,62 @@
+{% if messages %}
+<div class="store-notices" aria-live="polite">
+  {% for message in messages %}
+  <div class="store-notice" role="status"><span>{{ message }}</span><button type="button" data-store-dismiss aria-label="Dismiss notification">&times;</button></div>
+  {% endfor %}
+</div>
+{% endif %}
+{% if store_account %}
+<dialog id="store-profile-dialog" class="store-account-dialog" aria-labelledby="store-profile-title">
+  <div class="store-dialog-heading">
+    <div><p class="store-eyebrow">YOUR ACCOUNT</p><h2 id="store-profile-title">My profile</h2></div>
+    <button type="button" class="store-dialog-close" data-store-close aria-label="Close profile">&times;</button>
+  </div>
+  <div class="store-profile-intro">
+    <span class="store-avatar" aria-hidden="true">{{ store_account.name|first|upper }}</span>
+    <div><h3>{{ store_account.name }}</h3><p class="store-account-status">Approved club member</p></div>
+  </div>
+  <dl class="store-profile-details">
+    <div><dt>Email address</dt><dd>{{ store_account.email }}</dd></div>
+    <div><dt>Phone number</dt><dd>{{ store_account.phone }}</dd></div>
+    <div><dt>Age</dt><dd>{{ store_account.age }}</dd></div>
+    <div><dt>Playing position</dt><dd>{{ store_account.position }}</dd></div>
+  </dl>
+  <div class="store-profile-actions">
+    <button type="button" class="store-account-action" data-store-open="store-settings-dialog"><span>Settings</span><span aria-hidden="true">&rsaquo;</span></button>
+    <form method="post" action="{% url 'store_logout' %}">{% csrf_token %}<button type="submit" class="store-account-action">Log out</button></form>
+    <button type="button" class="store-account-action store-danger-text" data-store-open="store-delete-dialog">Delete account</button>
+  </div>
+</dialog>
+
+<dialog id="store-settings-dialog" class="store-account-dialog" aria-labelledby="store-settings-title">
+  <div class="store-dialog-heading">
+    <div><p class="store-eyebrow">MAKE IT YOURS</p><h2 id="store-settings-title">Settings</h2></div>
+    <button type="button" class="store-dialog-close" data-store-close aria-label="Close settings">&times;</button>
+  </div>
+  <h3 class="store-section-title">Display</h3>
+  <label class="store-display-setting" for="store-night-mode">
+    <span><strong>Night mode</strong><span class="store-setting-description">Use a darker display across the website.</span></span>
+    <span class="store-switch"><input id="store-night-mode" type="checkbox" role="switch" data-store-night-switch><span class="store-switch-track" aria-hidden="true"></span></span>
+  </label>
+  <p class="store-setting-note">Your display preference is remembered in this browser.</p>
+  <p class="store-display-status" data-store-theme-status role="status" aria-live="polite"></p>
+  <button type="button" class="store-secondary-button" data-store-open="store-profile-dialog">Back to profile</button>
+</dialog>
+
+<dialog id="store-delete-dialog" class="store-account-dialog" aria-labelledby="store-delete-title">
+  <div class="store-dialog-heading">
+    <div><p class="store-eyebrow">ACCOUNT</p><h2 id="store-delete-title">Delete your account?</h2></div>
+    <button type="button" class="store-dialog-close" data-store-close aria-label="Cancel account deletion">&times;</button>
+  </div>
+  <p>This permanently removes your club account and signs you out. This action cannot be undone.</p>
+  <form method="post" action="{% url 'store_account_delete' %}" class="store-delete-form">
+    {% csrf_token %}
+    <label for="store-delete-confirm">Type <strong>DELETE</strong> to confirm</label>
+    <input id="store-delete-confirm" name="confirm_delete" type="text" autocomplete="off" required pattern="DELETE" placeholder="DELETE">
+    <div class="store-confirm-actions">
+      <button type="button" class="store-secondary-button" data-store-open="store-profile-dialog">Cancel</button>
+      <button type="submit" class="store-danger-button">Delete account</button>
+    </div>
+  </form>
+</dialog>
+{% endif %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Search the club{% endblock %}
+{% block body %}
+<main class="store-search-page container">
+  <p class="store-search-eyebrow">EXPLORE THE CLUB</p>
+  <h1>Search the club</h1>
+  <form class="store-search-form" action="{% url 'store_search' %}" method="get" role="search" aria-label="Search club pages">
+    <label class="store-search-label" for="club-results-query">Search club pages and information</label>
+    <div class="store-search-input-row"><input id="club-results-query" name="q" type="search" value="{{ query }}" maxlength="120" placeholder="Try football, coaches or membership"><button type="submit" class="store-search-submit">Search</button></div>
+  </form>
+  {% if error %}
+  <p class="store-search-status" role="alert">{{ error }}</p>
+  {% elif is_initial %}
+  <h2 class="store-search-section-title">Popular pages</h2>
+  {% elif results %}
+  <p class="store-search-status" role="status">{{ total }} result{{ total|pluralize }} for “{{ query }}”</p>
+  {% else %}
+  <h2 class="store-search-section-title">No club pages found for “{{ query }}”</h2>
+  <p>Try football, coaches, membership or contact.{% if shop_search_url %} For individual products, use the shop search below.{% endif %}</p>
+  {% endif %}
+  {% if did_you_mean %}<p>Did you mean <a class="store-search-correction" href="{% url 'store_search' %}?q={{ did_you_mean|urlencode }}">{{ did_you_mean }}</a>?</p>{% endif %}
+  <ul class="store-search-result-list">
+    {% for result in results %}<li><a class="store-search-result" href="{{ result.url }}">
+      <span class="store-search-category">{{ result.category }}</span>
+      <h2>{% for part in result.title_parts %}{% if part.match %}<mark>{{ part.text }}</mark>{% else %}{{ part.text }}{% endif %}{% endfor %}</h2>
+      <p>{% for part in result.description_parts %}{% if part.match %}<mark>{{ part.text }}</mark>{% else %}{{ part.text }}{% endif %}{% endfor %}</p>
+    </a></li>{% endfor %}
+  </ul>
+  {% if shop_search_url %}<a class="store-search-shop" href="{{ shop_search_url }}">Search products in the shop for “{{ query }}” <span aria-hidden="true">→</span></a>{% endif %}
+</main>
+{% endblock %}

@@ -38,6 +38,10 @@ class Orders(models.Model):
     state = models.CharField(max_length=111)
     zip_code = models.CharField(max_length=111)
     phone = models.CharField(max_length=111, default="")
+    payment_state = models.CharField(max_length=16, default='unpaid')
+    payment_mode = models.CharField(max_length=12, default='')
+    paytm_order_id = models.CharField(max_length=50, unique=True, null=True, blank=True)
+    paytm_transaction_id = models.CharField(max_length=100, default='', blank=True)
 
 class OrderUpdate(models.Model):
     update_id  = models.AutoField(primary_key=True)

@@ -1,6 +1,17 @@
-<html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Store</title>
+    {% include 'store/includes/theme_head.html' %}
+</head>
     <body>
-        <form action="../update/{{a.id}}">
+<nav class="store-page-toolbar" aria-label="Account and home" hidden>
+  <a class="store-home-link" href="{% url 'store_home' %}">Home</a>
+  {% load store_ui %}{% store_account_menu %}
+</nav>
+        <form method="POST" action="/store/update/{{a.id}}">
             {% csrf_token %}
             <label for="a1">Name</label>
             <input type="text" name="a1" value="{{a.name}}">
@@ -16,5 +27,6 @@
             <input type="text" name="a6" value="{{a.position}}">
             <input type="submit">
         </form>
-    </body>
+      {% load store_ui %}{% store_account_panels %}
+</body>
 </html>

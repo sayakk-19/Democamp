@@ -1,0 +1,10 @@
+<dialog id="club-map" class="club-map" aria-labelledby="club-map-title">
+  <button type="button" class="club-map-close" aria-label="Close map">&times;</button>
+  <h2 id="club-map-title">Find the club</h2>
+  <form class="club-map-form">
+    <label for="club-map-address">Club address or place name</label>
+    <div><input id="club-map-address" name="address" type="search" maxlength="200" required placeholder="Enter the club location"><button type="submit">Show map</button></div>
+  </form>
+  <iframe title="Club location map" class="club-map-frame" referrerpolicy="no-referrer" loading="lazy" allowfullscreen hidden></iframe>
+  <a class="club-map-link" target="_blank" rel="noopener noreferrer" hidden>Open in Google Maps</a>
+</dialog>

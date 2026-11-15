@@ -1,0 +1,58 @@
+{
+  "result": "PASS",
+  "checks": [
+    "hidden at top and below threshold",
+    "appears after 300px",
+    "smooth click returns to top",
+    "single accessible button",
+    "reduced motion preference",
+    "mobile button placement",
+    "night mode",
+    "landing page avoids horizontal overflow from 320px to desktop",
+    "fixed shop navbar spacing",
+    "responsive shop spacing",
+    "mobile menu expansion and collapse",
+    "shop background section visible below navbar",
+    "concise replacement copy",
+    "product page button and existing sticky navbar",
+    "blog page shared button",
+    "five page layouts at nine mobile, tablet and desktop widths",
+    "sticky club header",
+    "header control alignment",
+    "24px vertical product gap",
+    "map dialog and encoded location URL (external map requests blocked in preview)"
+  ],
+  "shopMetrics": [
+    {
+      "width": 320,
+      "collapsed": 56,
+      "expanded": 408
+    },
+    {
+      "width": 360,
+      "collapsed": 56,
+      "expanded": 408
+    },
+    {
+      "width": 390,
+      "collapsed": 56,
+      "expanded": 408
+    },
+    {
+      "width": 768,
+      "collapsed": 56,
+      "expanded": 354
+    },
+    {
+      "width": 1024,
+      "collapsed": 92,
+      "expanded": 92
+    },
+    {
+      "width": 1366,
+      "collapsed": 60,
+      "expanded": 60
+    }
+  ],
+  "local_previews_only": true
+}

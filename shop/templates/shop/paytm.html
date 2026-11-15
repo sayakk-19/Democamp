@@ -2,20 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Paytm merchant payment page</title>
+    {% load static %}<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  {% include 'store/includes/theme_head.html' %}
 </head>
 <body>
-<h1>Redirecting you to the merchant....</h1>
-<h1>Please do not refresh your page....</h1>
-<form action="https://securegw-stage.paytm.in/theia/processTransaction" method="post" name="paytm">
-    {% for key, value in param_dict.items %}
-    <input type="hidden" name="{{key}}" value="{{value}}">
-    {% endfor %}
-
-</form>
-</body>
+<main class="container py-5">
+  <h1 class="h3">Complete your payment with Paytm</h1>
+  <p>Order {{ order.order_id }} — total <strong>₹{{ amount }}</strong></p>
+  <p id="paytm-message" role="status">Loading secure checkout…</p>
+  <button id="paytm-pay" type="button" class="btn btn-primary" disabled>Pay ₹{{ amount }}</button>
+  <a href="{% url 'Checkout' %}" class="ml-3">Return to checkout</a>
+  <form action="{% url 'HandleRequest' %}" method="post" id="paytm-result"></form>
+</main>
+{{ paytm_config|json_script:'paytm-checkout-config' }}
+<script src="{{ paytm_script_url }}"></script>
 <script>
-document.paytm.submit()
-// window.href.link = "https://paytm.me/PYTMPS/xtCfY6P"
+(function () {
+  const button = document.getElementById('paytm-pay');
+  const message = document.getElementById('paytm-message');
+  if (!window.Paytm || !window.Paytm.CheckoutJS) {
+    message.textContent = 'Paytm checkout could not load. Please return to checkout and try again.';
+    return;
+  }
+  const config = JSON.parse(document.getElementById('paytm-checkout-config').textContent);
+  config.handler = {
+    notifyMerchant: function () { message.textContent = 'Complete or cancel the payment in Paytm. The shop will verify its final status.'; },
+    transactionStatus: function (data) {
+      message.textContent = 'Verifying your payment…';
+      const form = document.getElementById('paytm-result');
+      Object.keys(data).forEach(function (key) {
+        if (data[key] === null || typeof data[key] === 'object') return;
+        const input = document.createElement('input');
+        input.type = 'hidden'; input.name = key; input.value = String(data[key]); form.appendChild(input);
+      });
+      form.submit();
+    }
+  };
+  window.Paytm.CheckoutJS.onLoad(function () { button.disabled = false; message.textContent = 'Your payment details are ready.'; });
+  button.addEventListener('click', async function () {
+    button.disabled = true;
+    try { await window.Paytm.CheckoutJS.init(config); window.Paytm.CheckoutJS.invoke(); }
+    catch (error) { message.textContent = 'Paytm could not open. Please return to checkout and try again.'; button.disabled = false; }
+  });
+})();
 </script>
+</body>
 </html>

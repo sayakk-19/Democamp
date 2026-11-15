@@ -1,5 +1,17 @@
-<html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Store</title>
+    {% include 'store/includes/theme_head.html' %}
+</head>
     <body>
+<nav class="store-page-toolbar" aria-label="Account and home">
+  <a class="store-home-link" href="{% url 'store_home' %}">Home</a>
+  {% load store_ui %}{% store_account_menu %}
+</nav>
         <input type="text" placeholder="Enter some texts">
-    </body>
+      {% load store_ui %}{% store_account_panels %}
+</body>
 </html>

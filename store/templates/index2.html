@@ -7,7 +7,6 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <!-- mobile metas -->
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
       <title>Homepage-Democamp</title>
       <meta name="keywords" content="">
@@ -24,7 +23,9 @@
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-   </head>
+     {% include 'store/includes/theme_head.html' %}
+      {% include 'store/includes/search_assets.html' %}
+</head>
    <!-- body -->
    <body class="main-layout">
       <!-- loader  -->
@@ -34,13 +35,13 @@
       <!-- end loader -->
       <div id="mySidepanel" class="sidepanel">
          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-         <a class="active" href="index2.html">Home</a>
-         <a href="about1.html">About</a>
-         <!-- <a href="index1.html">Log in</a> -->
-         <!-- <a href="register.html">Sign up</a> -->
-         <a href="games1.html">Games</a>
-         <a href="tranner1.html">Tranner</a>
-         <a href="contact1.html">Contact</a>
+         <a class="active" href="{% url 'store_home' %}">Home</a>
+         <a href="/store/about1.html">About</a>
+         <!-- <a href="{% url 'store_login' %}">Log in</a> -->
+         <!-- <a href="/store/register.html">Sign up</a> -->
+         <a href="/store/games1.html">Games</a>
+         <a href="/store/tranner1.html">Tranner</a>
+         <a href="/store/contact1.html">Contact</a>
       </div>
       <!-- header -->
       <header>
@@ -50,13 +51,13 @@
                <div class="row d_flex">
                   <div class="col-sm-3">
                      <div class="logo">
-                        <a href="index.html"><img src="{% static 'images/logo.png' %}" /></a>
+                        <a href="{% url 'store_home' %}"><img src="{% static 'images/logo.png' %}" /></a>
                      </div>
                   </div>
                   <div class="col-sm-9">
-                     <ul class="email text_align_right">
-                        <li><a href="Javascript:void(0)"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                        <li><a href="Javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                     <ul class="email text_align_right store-search-header">
+                        <li class="store-account-slot">{% load store_ui %}{% store_account_menu show_login=True %}</li>
+                        <li>{% include 'store/includes/search_trigger.html' %}</li>
                         <li> <button class="openbtn" onclick="openNav()"><img src="{% static 'images/menu_btn.png' %}"></button></li>
                      </ul>
                   </div>
@@ -74,7 +75,7 @@
                      <figure><img class="sm_n0" src="{% static 'images/bbnner.png' %}"> <img class="tes_n0" src="{% static 'images/banner1.jpg' %}"> </figure>
                      <div class="poa_t">
                         <h1>Sports club</h1>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a</p>
+                        <p>Discover training tips, meet the coaches and apply to join the club.</p>
                      </div>
                   </div>
                </div>
@@ -150,8 +151,8 @@
                <div class="col-md-10 offset-md-1">
                   <div class="titlepage text_align_center">
                      <h2>Our Sports Games</h2>
-                     <p>variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are goingvariations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going</p>
-                     <a class="read_more" href="sports.html">Read More</a>
+                     <p>Train with purpose, play fair and grow as a team. Practise ball control, passing and match awareness in every session.</p>
+                     <a class="read_more" href="/store/sports.html">Read More</a>
                   </div>
                </div>
             </div>
@@ -161,8 +162,8 @@
                      <figure><img  src="{% static 'images/sport1.png' %}" alt="#"/></figure>
                      <div class="sports_text">
                         <h3>Game 1</h3>
-                        <p>vailable, but the majority have suffered alteration in some form, by injected humour, or randomised words which</p>
-                        <a class="read_more" href="sports.html">Read More</a>
+                        <p>Build a strong foundation with focused practice. Work on control, balance and accurate passes before adding speed.</p>
+                        <a class="read_more" href="/store/sports.html">Read More</a>
                      </div>
                   </div>
                </div>
@@ -171,8 +172,8 @@
                      <figure><img class="dorder" src="{% static 'images/sport2.png' %}" alt="#"/></figure>
                      <div class="sports_text">
                         <h3 class="dark3">Game 2</h3>
-                        <p>vailable, but the majority have<br> suffered alteration in some <br>form, by injected humour, or <br> randomised words which</p>
-                        <a class="read_more" href="sports.html">Read More</a>
+                        <p>Play with purpose:<br> communicate with teammates, <br>look for space and <br> support every move.</p>
+                        <a class="read_more" href="/store/sports.html">Read More</a>
                      </div>
                   </div>
                </div>
@@ -181,8 +182,8 @@
                      <figure><img src="{% static 'images/sport3.png' %}" alt="#"/></figure>
                      <div class="sports_text">
                         <h3>Game 3</h3>
-                        <p>vailable, but the majority have suffered alteration in some form, by injected humour, or randomised words which</p>
-                        <a class="read_more" href="sports.html">Read More</a>
+                        <p>Put teamwork into practice. Stay aware of the play, encourage your teammates and learn from each game.</p>
+                        <a class="read_more" href="/store/sports.html">Read More</a>
                      </div>
                   </div>
                </div>
@@ -197,7 +198,7 @@
                <div class="col-md-12">
                   <div class="titlepage text_align_center">
                      <h2>About Our Club</h2>
-                     <p>n some form, by injected humour, or randomised</p>
+                     <p>A shared love of sport, teamwork and steady progress brings our club together.</p>
                   </div>
                </div>
                <div class="col-md-12">
@@ -219,7 +220,7 @@
                <div class="col-md-12">
                   <div class="titlepage text_align_center">
                      <h2>Our Club Trannir</h2>
-                     <p>n some form, by injected humour, or randomised</p>
+                     <p>Good training starts with clear goals, consistent practice and a willingness to learn.</p>
                   </div>
                </div>
             </div>
@@ -308,13 +309,13 @@
                <div class="col-md-10 offset-md-1">
                   <div class="titlepage text_align_center">
                      <h2>Join Our club</h2>
-                     <p>anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks</p>
+                     <p>Create your club account, complete your player details and submit your membership application.</p>
                   </div>
                </div>
                <div class="col-md-12">
                   <div class="club_btn">
                      <a class="read_more " href="Javascript:void(0)">Get In Touch</a>
-                     <a class="read_more" href="Javascript:void(0)">Map</a>
+                     <a class="read_more" href="https://www.google.com/maps" data-club-map>Map</a>
                      <a class="read_more" href="Javascript:void(0)">Join now</a>
                   </div>
                </div>
@@ -350,13 +351,13 @@
                   <div class="col-md-8 offset-md-2">
                      <div class="menu_bottom text_align_center">
                         <ul>
-                           <li><a href="index2.html">Home</a></li>
-                           <li><a href="about1.html">About</a></li>
-                           <!-- <li><a href="index1.html">Log in</a></li> -->
-                           <!-- <li><a href="register.html">Sign up</a></li> -->
-                           <li><a href="games1.html">Games</a></li>
-                           <li><a href="tranner1.html">Tranner</a></li>
-                           <li><a href="contact1.html">Contact</a></li>
+                           <li><a href="{% url 'store_home' %}">Home</a></li>
+                           <li><a href="/store/about1.html">About</a></li>
+                           <!-- <li><a href="{% url 'store_login' %}">Log in</a></li> -->
+                           <!-- <li><a href="/store/register.html">Sign up</a></li> -->
+                           <li><a href="/store/games1.html">Games</a></li>
+                           <li><a href="/store/tranner1.html">Tranner</a></li>
+                           <li><a href="/store/contact1.html">Contact</a></li>
                         </ul>
                      </div>
                   </div>
@@ -379,5 +380,10 @@
       <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
       <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
       <script src="{% static 'js/custom.js' %}"></script>
-   </body>
+     {% load store_ui %}{% store_account_panels %}
+  {% include 'store/includes/search_panel.html' %}
+  {% include 'store/includes/club_map.html' %}
+  <link rel="stylesheet" href="{% static 'shared/css/club-map.css' %}">
+  <script src="{% static 'shared/js/club-map.js' %}" defer></script>
+</body>
 </html>

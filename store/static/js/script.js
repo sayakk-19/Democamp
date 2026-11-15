@@ -55,6 +55,7 @@ class NeumorphismLoginForm {
 
     setupSocialButtons() {
         this.socialButtons.forEach(button => {
+            if (button.dataset.socialUrl) return;
             button.addEventListener('click', (e) => {
                 this.animateSoftPress(button);
 
@@ -127,7 +128,12 @@ class NeumorphismLoginForm {
         }, 150);
     }
 
+    validateRange(input) {
+        return !window.RegistrationFieldRanges || window.RegistrationFieldRanges.validateField(input);
+    }
+
     validateName() {
+        if (!this.validateRange(this.nameInput)) return false;
         const name = this.nameInput.value
 
         if (!name) {
@@ -140,6 +146,7 @@ class NeumorphismLoginForm {
     }
 
     validateEmail() {
+        if (!this.validateRange(this.emailInput)) return false;
         const email = this.emailInput.value.trim();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -158,6 +165,7 @@ class NeumorphismLoginForm {
     }
 
     validatePhno() {
+        if (!this.validateRange(this.phnoInput)) return false;
         const phno = this.phnoInput.value
 
         if (!phno) {
@@ -175,6 +183,7 @@ class NeumorphismLoginForm {
     }
 
     validatePassword() {
+        if (!this.validateRange(this.passwordInput)) return false;
         const password = this.passwordInput.value;
 
         if (!password) {
@@ -192,6 +201,7 @@ class NeumorphismLoginForm {
     }
 
     validateReenter_Password() {
+        if (!this.validateRange(this.reenter_passwordInput)) return false;
         const reenter_password = this.reenter_passwordInput.value;
 
         if (!reenter_password) {
@@ -204,6 +214,7 @@ class NeumorphismLoginForm {
     }
 
     validateAge() {
+        if (!this.validateRange(this.ageInput)) return false;
         const age = this.ageInput.value;
 
         if (!age) {
@@ -216,6 +227,7 @@ class NeumorphismLoginForm {
     }
 
     validatePosition() {
+        if (!this.validateRange(this.positionInput)) return false;
         const pos = this.positionInput.value;
 
         if (!pos) {
@@ -250,7 +262,9 @@ class NeumorphismLoginForm {
         formGroup.classList.remove('error');
         errorElement.classList.remove('show');
         setTimeout(() => {
-            errorElement.textContent = '';
+            if (!errorElement.classList.contains('show')) {
+                errorElement.textContent = '';
+            }
         }, 300);
     }
 

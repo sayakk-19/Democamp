@@ -1,0 +1,481 @@
+
+<!doctype html>
+<html lang="en">
+  <head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src file: 'unsafe-inline'; style-src file: 'unsafe-inline'; img-src file: data:; font-src file: data:; connect-src 'none'">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/css/bootstrap.min.css">
+
+    <title> MyAwesomeCart - Best Ecommerce Website</title>
+     <style>
+.col-md-3
+{
+display: inline-block;
+margin-left:-4px;
+}
+.carousel-indicators .active {
+background-color: blue;
+}
+.col-md-3 img{
+width: 170px;
+height: 200px;
+}
+body .carousel-indicator li{
+background-color: blue;
+}
+body .carousel-indicators{
+bottom: -40px;
+}
+.carousel-indicators li {
+
+
+    background-color: #7270fc;
+}
+body .carousel-control-prev-icon,
+body .carousel-control-next-icon{
+background-color: blue;
+}
+.carousel-control-prev,
+.carousel-control-next{
+top: auto;
+bottom: auto;
+padding-top: 222px;
+}
+body .no-padding{
+padding-left: 0,
+padding-right: 0;
+}
+
+</style>
+    
+
+<link rel="stylesheet" href="file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/shared/css/store-account.css">
+
+<link rel="stylesheet" href="file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/shared/css/back-to-top.css">
+
+
+    <style>body.shop-fixed-header { padding-top: 64px; }</style>
+    
+  <style>.loader_bg{display:none!important;}</style><script src="file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/shared/js/back-to-top.js" defer></script><script src="file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/shop/static/shop/js/navbar-spacing.js" defer></script></head>
+  <body class="shop-fixed-header">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="/shop/index">My Awesome Cart</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/shop/index">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/shop/about">About Us</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/shop/tracker">Tracker</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/blog">Blog</a>
+      </li>
+
+       <li class="nav-item">
+        <a class="nav-link" href="/shop/contact">Contact Us</a>
+      </li>
+
+
+    </ul>
+    <form method='get' action='/shop/search/' class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <button type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Review your selected items and continue to checkout.">
+
+
+  Cart(<span id="cart">0</span>)
+</button>
+    <span class="ml-2">
+<a class="store-account-signup store-button-effects" href="/preview/store_signup/">Sign up</a>
+
+</span>
+  </div>
+</nav>
+  
+
+<div class="container">
+    <!--Slideshow starts here -->
+    
+    <h5 class="my-4">Flash Sale On Sports - Recommended Items</h5>
+    <div class="row">
+        <div id="demo1" class="col carousel slide my-3" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#demo1" data-slide-to="0" class="active"></li>
+                
+                <li data-target="#demo1" data-slide-to="0"></li>
+                
+            </ul>
+            <div class="container carousel-inner no-padding">
+                <div class="carousel-item active">
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <!-- left and right controls for the slide -->
+        <a class="carousel-control-prev" href="#demo1" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo1" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    
+    <h5 class="my-4">Flash Sale On Sports - Recommended Items</h5>
+    <div class="row">
+        <div id="demo2" class="col carousel slide my-3" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#demo2" data-slide-to="0" class="active"></li>
+                
+                <li data-target="#demo2" data-slide-to="0"></li>
+                
+            </ul>
+            <div class="container carousel-inner no-padding">
+                <div class="carousel-item active">
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <!-- left and right controls for the slide -->
+        <a class="carousel-control-prev" href="#demo2" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo2" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    
+    <h5 class="my-4">Flash Sale On Sports - Recommended Items</h5>
+    <div class="row">
+        <div id="demo3" class="col carousel slide my-3" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#demo3" data-slide-to="0" class="active"></li>
+                
+                <li data-target="#demo3" data-slide-to="0"></li>
+                
+            </ul>
+            <div class="container carousel-inner no-padding">
+                <div class="carousel-item active">
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <!-- left and right controls for the slide -->
+        <a class="carousel-control-prev" href="#demo3" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo3" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    
+    <h5 class="my-4">Flash Sale On Sports - Recommended Items</h5>
+    <div class="row">
+        <div id="demo4" class="col carousel slide my-3" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#demo4" data-slide-to="0" class="active"></li>
+                
+                <li data-target="#demo4" data-slide-to="0"></li>
+                
+            </ul>
+            <div class="container carousel-inner no-padding">
+                <div class="carousel-item active">
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='file:///C:/Users/Sayak/Desktop/Test/football%20-%20Copy/store/static/images/foot.png' class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr1" data-toggle="tooltip" data-placement="bottom" title="Training football">Training football</h5>
+                                <p class="card-text" data-toggle="tooltip" data-placement="bottom" title="Equipment for regular practice.">Equipment for regular practice...</p>
+                                <h6 class="card-title" >Price: <span id="pricepr1">499</span></h6>
+                                <span id="divpr1" class="divpr">
+                                    <button id="pr1" class="btn btn-primary cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/1"><button id="qv1" class="btn btn-primary cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <!-- left and right controls for the slide -->
+        <a class="carousel-control-prev" href="#demo4" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo4" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    
+</div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+    
+    
+    
+
+
+    
+
+
+  </body>
+</html>

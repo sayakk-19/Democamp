@@ -7,7 +7,6 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <!-- mobile metas -->
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
       <title>Contact details</title>
       <meta name="keywords" content="">
@@ -24,7 +23,8 @@
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-   </head>
+     {% include 'store/includes/theme_head.html' %}
+</head>
    <!-- body -->
    <body class="main-layout inner_page">
       <!-- loader  -->
@@ -34,13 +34,13 @@
       <!-- end loader -->
       <div id="mySidepanel" class="sidepanel">
          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-         <a href="index.html">Home</a>
-         <a href="about.html">About</a>
-         <a href="index1.html">Log in</a>
-         <a href="registration">Sign up</a>
-         <a href="games.html">Games</a>
-         <a href="tranner.html">Tranner</a>
-         <a class="active" href="contact.html">Contact</a>
+         <a href="{% url 'store_home' %}">Home</a>
+         <a href="/store/about.html">About</a>
+         <a href="{% url 'store_login' %}">Log in</a>
+         <a href="{% url 'store_signup' %}">Sign up</a>
+         <a href="/store/games.html">Games</a>
+         <a href="/store/tranner.html">Tranner</a>
+         <a class="active" href="/store/contact.html">Contact</a>
       </div>
       <!-- header -->
       <header>
@@ -50,12 +50,12 @@
                <div class="row d_flex">
                   <div class="col-sm-3">
                      <div class="logo">
-                        <a href="index.html"><img src="{% static 'images/logo.png' %}" /></a>
+                        <a href="{% url 'store_home' %}"><img src="{% static 'images/logo.png' %}" /></a>
                      </div>
                   </div>
                   <div class="col-sm-9">
                      <ul class="email text_align_right">
-                        <li><a href="Javascript:void(0)"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                        <li class="store-account-slot">{% load store_ui %}{% store_account_menu %}</li>
                         <li><a href="Javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                         <li> <button class="openbtn" onclick="openNav()"><img src="{% static 'images/menu_btn.png' %}"></button></li>
                      </ul>
@@ -131,13 +131,13 @@
                   <div class="col-md-8 offset-md-2">
                      <div class="menu_bottom text_align_center">
                         <ul>
-                           <li><a href="index.html">Home</a></li>
-                           <li><a href="about.html">About</a></li>
-                           <li><a href="index1.html">Log in</a></li>
-                           <li><a href="registration">Sign up</a></li>
-                           <li><a href="games.html">Games</a></li>
-                           <li><a href="tranner.html">Tranner</a></li>
-                           <li><a href="contact.html">Contact</a></li>
+                           <li><a href="{% url 'store_home' %}">Home</a></li>
+                           <li><a href="/store/about.html">About</a></li>
+                           <li><a href="{% url 'store_login' %}">Log in</a></li>
+                           <li><a href="{% url 'store_signup' %}">Sign up</a></li>
+                           <li><a href="/store/games.html">Games</a></li>
+                           <li><a href="/store/tranner.html">Tranner</a></li>
+                           <li><a href="/store/contact.html">Contact</a></li>
                         </ul>
                      </div>
                   </div>
@@ -160,5 +160,6 @@
       <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
       <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
       <script src="{% static 'js/custom.js' %}"></script>
-   </body>
+     {% load store_ui %}{% store_account_panels %}
+</body>
 </html>

@@ -1,0 +1,171 @@
+:root {
+  --store-surface: #ffffff;
+  --store-soft: #f3f5f7;
+  --store-text: #23263b;
+  --store-muted: #646b7b;
+  --store-border: #dce1e7;
+  --store-accent: #168226;
+  --store-danger: #b42335;
+}
+html[data-display="night"] {
+  color-scheme: dark;
+  --store-surface: #1b2331;
+  --store-soft: #121925;
+  --store-text: #edf2f7;
+  --store-muted: #b0bed0;
+  --store-border: #354157;
+  --store-accent: #65de79;
+  --store-danger: #ff9ea8;
+  background: #101620;
+}
+.store-account-slot { vertical-align: middle; }
+.store-profile-trigger, a.store-account-signup {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 1px solid var(--store-border);
+  background: var(--store-surface);
+  color: var(--store-text) !important;
+  cursor: pointer;
+  font: 600 15px/1.2 Arial, sans-serif;
+  text-decoration: none;
+}
+.store-profile-trigger { width: 44px; border-radius: 50%; padding: 10px; }
+a.store-account-signup { border-radius: 24px; padding: 11px 22px; white-space: nowrap; }
+.store-profile-trigger:hover, a.store-account-signup:hover { border-color: var(--store-accent); color: var(--store-accent) !important; }
+.store-profile-trigger:focus-visible, .store-account-dialog :focus-visible, .store-account-signup:focus-visible {
+  outline: 3px solid var(--store-accent); outline-offset: 3px;
+}
+.store-page-toolbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  position: fixed; top: 12px; right: 20px; left: 20px; z-index: 900;
+  pointer-events: none;
+}
+.store-page-toolbar > * { pointer-events: auto; }
+.store-page-toolbar[hidden] { display: none; }
+a.store-home-link { color: var(--store-text); background: var(--store-surface); padding: 10px 16px; border-radius: 22px; border: 1px solid var(--store-border); text-decoration: none; font: 600 14px/1.4 Arial, sans-serif; }
+/* Interaction polish applies to store controls without restyling other apps. */
+.store-button-effects, a.store-home-link {
+  position: relative;
+  box-shadow: 0 3px 10px #16223712;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, color 160ms ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+@media (hover: hover) {
+  .store-button-effects:hover, a.store-home-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px #16223722;
+    border-color: var(--store-accent);
+    color: var(--store-accent) !important;
+  }
+}
+.store-button-effects:active, a.store-home-link:active {
+  transform: translateY(1px) scale(.97);
+  box-shadow: inset 0 2px 5px #16223718;
+}
+a.store-home-link:focus-visible {
+  outline: 3px solid var(--store-accent);
+  outline-offset: 3px;
+}
+.store-account-dialog {
+  box-sizing: border-box; position: fixed; inset: 0; margin: auto;
+  width: min(460px, calc(100vw - 32px)); max-height: calc(100dvh - 40px);
+  padding: 28px; border: 1px solid var(--store-border); border-radius: 22px;
+  background: var(--store-surface); color: var(--store-text);
+  box-shadow: 0 24px 80px #0005; overflow-y: auto;
+  font: 15px/1.55 Arial, sans-serif; text-align: left;
+}
+.store-account-dialog:not([open]) { display: none; }
+.store-account-dialog::backdrop { background: #070c18a6; }
+.store-account-dialog * { box-sizing: border-box; }
+.store-account-dialog h2, .store-account-dialog h3, .store-account-dialog p { color: var(--store-text); margin: 0; padding: 0; }
+.store-account-dialog h2 { font-size: 25px; line-height: 1.25; font-weight: 700; }
+.store-account-dialog h3 { font-size: 18px; line-height: 1.4; font-weight: 600; }
+.store-dialog-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 26px; }
+.store-account-dialog .store-eyebrow { color: var(--store-muted); font-size: 10px; letter-spacing: 1.8px; font-weight: 700; margin-bottom: 8px; }
+.store-dialog-close { border: 0; background: var(--store-soft); color: var(--store-text); border-radius: 50%; width: 34px; height: 34px; flex-shrink: 0; padding: 0; font: 24px/1 Arial, sans-serif; cursor: pointer; }
+.store-profile-intro { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; overflow-wrap: anywhere; }
+.store-avatar { display: flex; align-items: center; justify-content: center; flex-shrink: 0; height: 58px; width: 58px; border-radius: 50%; background: var(--store-soft); color: var(--store-accent); font-size: 26px; font-weight: 700; }
+.store-account-dialog .store-account-status { font-size: 12px; color: var(--store-accent); margin-top: 4px; }
+.store-profile-details { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 16px; margin: 0 0 26px; }
+.store-profile-details > div:first-child { grid-column: 1 / -1; }
+.store-profile-details dt { font-size: 12px; color: var(--store-muted); font-weight: 400; margin-bottom: 4px; }
+.store-profile-details dd { margin: 0; font-size: 14px; color: var(--store-text); overflow-wrap: anywhere; }
+.store-profile-actions { border-top: 1px solid var(--store-border); padding-top: 10px; }
+.store-profile-actions form { margin: 0; padding: 0; width: 100%; }
+.store-account-action { width: 100%; padding: 14px 10px; display: flex; align-items: center; justify-content: space-between; background: transparent; border: 0; border-radius: 8px; color: var(--store-text); font: 600 14px/1.4 Arial, sans-serif; cursor: pointer; text-align: left; }
+.store-account-action:hover { background: var(--store-soft); }
+.store-danger-text { color: var(--store-danger); }
+.store-section-title { margin-bottom: 18px !important; }
+.store-display-setting { display: flex; justify-content: space-between; align-items: center; gap: 18px; cursor: pointer; padding: 18px 0; border-top: 1px solid var(--store-border); border-bottom: 1px solid var(--store-border); margin: 0; }
+.store-display-setting strong { display: block; font-size: 15px; color: var(--store-text); }
+.store-setting-description { display: block; font-size: 12px; color: var(--store-muted); margin-top: 4px; }
+.store-switch { position: relative; flex: 0 0 48px; width: 48px; height: 28px; }
+.store-switch input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.store-switch-track { display: block; width: 48px; height: 28px; border-radius: 20px; background: #8793a7; pointer-events: none; transition: background .2s; }
+.store-switch-track::after { content: ""; display: block; position: absolute; left: 4px; top: 4px; width: 20px; height: 20px; border-radius: 50%; background: white; transition: transform .2s; }
+.store-switch input:checked + .store-switch-track { background: #218d35; }
+.store-switch input:checked + .store-switch-track::after { transform: translateX(20px); }
+.store-switch input:focus-visible + .store-switch-track { outline: 3px solid var(--store-accent); outline-offset: 3px; }
+.store-account-dialog .store-setting-note { color: var(--store-muted); margin-top: 16px; font-size: 12px; }
+.store-account-dialog .store-display-status { margin: 8px 0 24px; color: var(--store-accent); font-size: 13px; }
+.store-secondary-button, .store-danger-button { border-radius: 10px; padding: 11px 16px; font: 600 13px/1.4 Arial, sans-serif; cursor: pointer; }
+.store-secondary-button { border: 1px solid var(--store-border); background: var(--store-soft); color: var(--store-text); }
+.store-danger-button { border: 1px solid #b42335; background: #b42335; color: white; }
+.store-delete-form { margin-top: 20px; }
+.store-delete-form label { display: block; font-size: 13px; color: var(--store-text); margin-bottom: 8px; }
+.store-delete-form input { display: block; width: 100%; border: 1px solid var(--store-border); border-radius: 8px; padding: 11px 12px; background: var(--store-soft); color: var(--store-text); font: 15px/1.4 Arial, sans-serif; }
+.store-confirm-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+.store-notices { position: fixed; right: 20px; bottom: 20px; z-index: 1100; display: grid; gap: 8px; max-width: min(400px, calc(100vw - 40px)); }
+.store-notice { display: flex; align-items: center; gap: 18px; padding: 14px 16px; border: 1px solid var(--store-border); border-left: 4px solid var(--store-accent); border-radius: 10px; background: var(--store-surface); color: var(--store-text); box-shadow: 0 8px 26px #0002; font: 14px/1.5 Arial, sans-serif; }
+.store-notice button { background: transparent; border: 0; color: var(--store-text); font-size: 22px; padding: 4px; cursor: pointer; }
+
+/* Site-wide display overrides keep existing page layouts and images intact. */
+html[data-display="night"] body { background: #101620 !important; background-image: none !important; color: var(--store-text) !important; }
+html[data-display="night"] :is(h1,h2,h3,h4,h5,h6,p,label,dt,dd,legend) { color: var(--store-text); }
+html[data-display="night"] :is(.titlepage h2,.titlepage p,.sports_text p,.sports_text h3,.dark3,.trannir_text h3,.trannir_text p,.about_box p,.product-title,.current-price,.description-text) { color: var(--store-text) !important; }
+html[data-display="night"] a { color: #83dc91; }
+html[data-display="night"] :is(.email li a,.trannir_text .social_icon a,.mac-nav-item,.mac-logo,.mac-logo small) { color: var(--store-text) !important; }
+html[data-display="night"] a.read_more { color: white; background: #196c2c; }
+html[data-display="night"] :is(a.btn-primary,a.btn-success,.navbar-dark .navbar-brand,.navbar-dark .nav-link) { color: white; }
+html[data-display="night"] :is(.loader_bg,.card,.card-body,.bg-light,.bg-white,.list-group-item,.popover,.popover-header,.modal-content,.dropdown-menu,.mac-navbar,.mac-dropdown-menu,.breadcrumb-area,.product-main,.main-image-box,.description-section,.offer-box,.thumbnail,.size-btn) {
+  background: var(--store-surface) !important; color: var(--store-text) !important; border-color: var(--store-border) !important;
+}
+html[data-display="night"] :is(.product-page,.copyright,.jumbotron) { background: var(--store-soft) !important; color: var(--store-text) !important; }
+html[data-display="night"] :is(.size-btn.selected,.size-btn:hover) { color: var(--store-accent) !important; border-color: var(--store-accent) !important; background: #23382b !important; }
+html[data-display="night"] :is(.footer,.sidepanel) { background-color: #121b2b; }
+html[data-display="night"] .head-top { background: var(--store-soft) !important; }
+html[data-display="night"] .logo { display: inline-block; padding: 4px 8px; border-radius: 6px; background: #dde8e1; }
+html[data-display="night"] .openbtn img { filter: brightness(0) invert(1); }
+html[data-display="night"] .footer { background-image: none; }
+html[data-display="night"] .text-dark { color: var(--store-text) !important; }
+html[data-display="night"] :is(.text-muted,.breadcrumb,.breadcrumb-item,.product-subtitle,.original-price,.description-text,.price-discount) { color: var(--store-muted) !important; }
+html[data-display="night"] :is(table,th,td,.border) { color: var(--store-text); border-color: var(--store-border) !important; }
+html[data-display="night"] :is(input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]),textarea,select,.form-control,.main_form .contactus,.main_form .textarea,.mac-search) {
+  background-color: var(--store-soft) !important; color: var(--store-text) !important; border-color: var(--store-border) !important;
+}
+html[data-display="night"] input::placeholder, html[data-display="night"] textarea::placeholder { color: #9ba9bd; opacity: 1; }
+html[data-display="night"] :is(.login-card,.neu-icon,.neu-input,.neu-toggle,.neu-checkbox,.neu-social,.success-message) {
+  background: var(--store-surface) !important; color: var(--store-text) !important; box-shadow: 8px 8px 24px #080d16, -4px -4px 16px #273348 !important;
+}
+html[data-display="night"] .neu-input { box-shadow: inset 4px 4px 10px #0c111b, inset -4px -4px 10px #273348 !important; }
+html[data-display="night"] .neu-input input { background: transparent !important; }
+html[data-display="night"] .neu-input input::placeholder { color: transparent; }
+html[data-display="night"] :is(.neu-input label,.input-icon,.icon-inner,.form-options,.checkbox-label,.signup-link p,.divider span) { color: var(--store-muted) !important; }
+html[data-display="night"] .divider span { background: var(--store-surface) !important; }
+html[data-display="night"] .divider-line { background: var(--store-border) !important; }
+html[data-display="night"] .neu-button { background: #237335 !important; color: #fff !important; box-shadow: 5px 5px 15px #080d16, -3px -3px 12px #273348 !important; }
+html[data-display="night"] .alert { color: var(--store-text); background: #233247; border-color: var(--store-border); }
+@media (max-width: 480px) {
+  .store-account-dialog { padding: 22px; }
+  .store-page-toolbar { top: 8px; left: 12px; right: 12px; }
+  a.store-account-signup { padding: 10px 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .store-switch-track, .store-switch-track::after { transition: none; }
+  .store-button-effects, a.store-home-link { transition: none; }
+  .store-button-effects:hover, .store-button-effects:active,
+  a.store-home-link:hover, a.store-home-link:active { transform: none; }
+}

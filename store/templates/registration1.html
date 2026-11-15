@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -191,8 +192,13 @@ form .btn input[type="submit"]{
   cursor: pointer;
 }
     </style>
+  {% include 'store/includes/theme_head.html' %}
 </head>
 <body>
+<nav class="store-page-toolbar" aria-label="Account and home">
+  <a class="store-home-link" href="{% url 'store_home' %}">Home</a>
+  {% load store_ui %}{% store_account_menu hide_signup=True %}
+</nav>
     <div class="wrapper">
       <div class="title-text">
         <div class="title login">Login Form</div>
@@ -258,5 +264,6 @@ form .btn input[type="submit"]{
         return false;
       });
     </script>
+  {% load store_ui %}{% store_account_panels %}
 </body>
 </html>

@@ -1,3 +1,4 @@
+{% load static %}
 <html>
     <head>
         <style>
@@ -24,15 +25,32 @@
                 background: linear-gradient(to right, black, green, yellow);
                 transition: all 500ms ease;
             }
-            [data-operations="crud"] a:hover{
+            [data-operations="crud"] a:hover,
+            [data-operations="crud"] button:hover{
                 color: aliceblue;
                 transition: all 500ms ease;
                 /* background-color: ; */
             }
+            /* POST actions keep the same link colors as the original controls. */
+            [data-operations="crud"] button{
+                color: LinkText !important;
+            }
+            html[data-display="night"] [data-operations="crud"] button{
+                color: #83dc91 !important;
+            }
+            [data-operations="crud"] button:hover,
+            html[data-display="night"] [data-operations="crud"] button:hover{
+                color: aliceblue !important;
+            }
             
         </style>
-    </head>
+      {% include 'store/includes/theme_head.html' %}
+</head>
     <body>
+<nav class="store-page-toolbar" aria-label="Account and home" hidden>
+  <a class="store-home-link" href="{% url 'store_home' %}">Home</a>
+  {% load store_ui %}{% store_account_menu %}
+</nav>
         <table style="border: 1px solid black;">
             <tr>
                 <th>Name</th>
@@ -53,17 +71,26 @@
                 <td>{{i.pwd}}</td>
                 <td>{{i.age}}</td>
                 <td>{{i.position}}</td>
-                <td data-operations="crud"><a style="text-decoration: none;" href="edit/{{i.id}}">Edit</a></td>
-                <td data-operations="crud"><a style="text-decoration: none;" href="delete/{{i.id}}">Delete</a></td>
+                <td data-operations="crud"><a style="text-decoration: none;" href="/store/edit/{{i.id}}">Edit</a></td>
+                <td data-operations="crud">
+                    <form method="POST" action="/store/delete/{{i.id}}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="border: 0; background: none; padding: 0; color: inherit; cursor: pointer; font: inherit;">Delete</button>
+                    </form>
+                </td>
                 <td data-operations="crud">
                 {% if i.appr == 1 %}
                     Approved
                 {% else %}
-                    <a style="text-decoration: none;" href="apr/{{i.id}}">Approve</a>
+                    <form method="POST" action="/store/apr/{{i.id}}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="border: 0; background: none; padding: 0; color: inherit; cursor: pointer; font: inherit;">Approve</button>
+                    </form>
                 {% endif %}    
                 </td>
             </tr>
             {% endfor %}  
         </table>
-    </body>
+      {% load store_ui %}{% store_account_panels %}
+</body>
 </html>

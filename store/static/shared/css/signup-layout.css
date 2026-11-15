@@ -1,0 +1,127 @@
+/* Signup-only layout: retain the existing form controls and visual style. */
+body.store-signup-page {
+  padding: 12px 24px;
+}
+
+.store-signup-page .store-page-toolbar {
+  position: static;
+  inset: auto;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto 8px;
+  flex-shrink: 0;
+}
+
+.store-signup-page .signup-container {
+  max-width: 860px;
+}
+
+.store-signup-page .signup-container .login-card {
+  padding: 20px 32px;
+}
+
+.store-signup-page .login-header {
+  margin-bottom: 12px;
+}
+
+.store-signup-page #loginForm {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px 20px;
+}
+
+.store-signup-page #loginForm > .form-group {
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.store-signup-page #loginForm .error-message:empty {
+  display: none;
+}
+
+.store-signup-page #loginForm > .form-options,
+.store-signup-page #loginForm > .login-btn {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.store-signup-page #loginForm .neu-input input,
+.store-signup-page #loginForm > .login-btn {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.store-signup-page .divider {
+  margin: 10px 0;
+}
+
+.store-signup-page .social-login {
+  margin-bottom: 12px;
+}
+
+.store-signup-page .signup-link p {
+  margin-bottom: 0;
+}
+
+@media (min-width: 700px) {
+  .store-signup-page #loginForm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .store-signup-page #loginForm > .form-options {
+    grid-column: auto;
+    align-self: center;
+    justify-content: flex-start;
+  }
+
+  .store-signup-page .login-header > .neu-icon {
+    margin-bottom: 8px;
+  }
+
+  .store-signup-page .login-header h2 {
+    margin-bottom: 6px;
+  }
+
+  .store-signup-page .login-header p {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 699px) {
+  body.store-signup-page {
+    justify-content: flex-start;
+    padding: 16px;
+  }
+
+  .store-signup-page .signup-container,
+  .store-signup-page .store-page-toolbar {
+    max-width: 520px;
+  }
+
+  .store-signup-page .signup-container .login-card {
+    padding: 28px 24px;
+  }
+
+  .store-signup-page .login-header > .neu-icon {
+    margin-bottom: 16px;
+  }
+
+  .store-signup-page .login-header p {
+    margin-bottom: 0;
+  }
+
+  .store-signup-page #loginForm {
+    gap: 16px;
+  }
+
+  .store-signup-page #loginForm .neu-input input {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .store-signup-page .signup-container .login-card {
+    padding: 24px 18px;
+  }
+}

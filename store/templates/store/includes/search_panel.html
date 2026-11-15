@@ -1,0 +1,27 @@
+<dialog id="store-search-dialog" class="store-search-dialog" aria-labelledby="store-search-title">
+  <div class="store-search-heading">
+    <div><p class="store-search-eyebrow">FIND YOUR WAY</p><h2 id="store-search-title">Search the club</h2></div>
+    <button type="button" class="store-search-close" data-store-search-close aria-label="Close search">&times;</button>
+  </div>
+  <form class="store-search-form" action="{% url 'store_search' %}" method="get" role="search" aria-label="Club search">
+    <label class="store-search-label" for="store-search-input">What are you looking for?</label>
+    <div class="store-search-input-row">
+      <div class="store-search-input-wrap">
+        <input id="store-search-input" name="q" type="search" maxlength="120" autocomplete="off" placeholder="Try football, coaches or membership" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="store-search-suggestions" aria-describedby="store-search-help" data-suggestions-url="{% url 'store_search_suggestions' %}" autofocus>
+        <button type="button" class="store-search-clear" data-store-search-clear aria-label="Clear search" hidden>&times;</button>
+      </div>
+      <button class="store-search-submit" type="submit">Search</button>
+    </div>
+  </form>
+  <p id="store-search-help" class="store-search-help">Find club pages, training and membership information.</p>
+  <div class="store-search-topics" aria-label="Popular searches">
+    <button type="button" data-search-query="football">Football</button>
+    <button type="button" data-search-query="coaches">Coaches</button>
+    <button type="button" data-search-query="membership">Membership</button>
+  </div>
+  <p class="store-search-status" data-store-search-status role="status" aria-live="polite">Choose a topic or start typing.</p>
+  <ul id="store-search-suggestions" class="store-search-suggestions" role="listbox" aria-label="Suggested club pages" aria-busy="false"></ul>
+  <button type="button" class="store-search-correction" data-store-search-correction hidden></button>
+  <a class="store-search-shop" data-store-search-shop hidden>Search products in the shop</a>
+  <p class="store-search-keyboard">Use ↑ ↓ to choose a result, Enter to open it, or Esc to close.</p>
+</dialog>

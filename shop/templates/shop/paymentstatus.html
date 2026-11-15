@@ -2,15 +2,19 @@
 {% block title%} My Awesome Cart Tracker{% endblock %}
 {% block body %}
 <div class="container">
-    {{response}}
     <div class="col my-4">
 
         <h2>Payment status regarding your order Id {{response.ORDERID}}</h2>
-        {% if response.RESPCODE == '01' %}
-        ORDER SUCCESS
+        {% if is_demo %}<p class="alert alert-warning"><strong>LOCAL DEMO:</strong> No real money was charged.</p>{% endif %}
+        {% if payment_success %}
+        <p class="text-success">{% if is_demo %}DEMO PAYMENT SUCCESS{% else %}PAYMENT VERIFIED{% endif %}</p>
+        {% elif payment_pending %}
+        <p>PAYMENT PENDING — success has not been confirmed.</p>
         {% else %}
-        ORDER FAILURE
+        <p class="text-danger">PAYMENT NOT CONFIRMED</p>
         {% endif%}
+        <p role="status">{{ payment_message }}</p>
+        <a href="{% url 'Checkout' %}">Return to checkout</a>
 
     </div>
 

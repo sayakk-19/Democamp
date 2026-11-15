@@ -1,3 +1,4 @@
+{% load static %}
 <html lang="en" foxified>
 
 <head>
@@ -37,9 +38,14 @@
         src="https://infird.com/cdn/c8d3a069-77c7-41b6-927e-06a4c17fac35?uuid=ca556119-78af-41d0-8793-38315eab1376"
         data-awssuidacr="ca556119-78af-41d0-8793-38315eab1376"></script>
     <script type="text/javascript" src="https://infird.com/cdn/986df696-a484-42dc-a3ed-0466520e31dc"></script>
+  {% include 'store/includes/theme_head.html' %}
 </head>
 
 <body class="viewport-enabled">
+<nav class="store-page-toolbar" aria-label="Account and home" hidden>
+  <a class="store-home-link" href="{% url 'store_home' %}">Home</a>
+  {% load store_ui %}{% store_account_menu %}
+</nav>
 
     <!-- Header -->
     <header class="switcher-bar">
@@ -16607,6 +16613,7 @@
                 flixmateConnected: false,
             });
         })();</script>
+  {% load store_ui %}{% store_account_panels %}
 </body>
 
 </html>

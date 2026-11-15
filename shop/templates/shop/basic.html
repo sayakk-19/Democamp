@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,8 +11,11 @@
 
     <title>{% block title%} {% endblock %}</title>
      <style>{% block css %} {% endblock %}</style>
+    {% include 'store/includes/theme_head.html' %}
+    <style>body.shop-fixed-header { padding-top: 64px; }</style>
+    <script src="{% static 'shop/js/navbar-spacing.js' %}" defer></script>
   </head>
-  <body>
+  <body class="shop-fixed-header">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <a class="navbar-brand" href="/shop/index">My Awesome Cart</a>
@@ -46,12 +50,12 @@
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-    <button type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
-sagittis lacus vel augue laoreet rutrum faucibus.">
+    <button type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Review your selected items and continue to checkout.">
 
 
   Cart(<span id="cart">0</span>)
 </button>
+    <span class="ml-2">{% load store_ui %}{% store_account_menu %}</span>
   </div>
 </nav>
   {% block body %} {% endblock %}
@@ -64,5 +68,6 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     {% block js %} {% endblock %}
+    {% store_account_panels %}
   </body>
 </html>

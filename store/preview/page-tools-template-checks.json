@@ -1,0 +1,7 @@
+{
+  "result": "PASS",
+  "rendered_templates": 41,
+  "database_access": false,
+  "back_to_top_assets": "Included exactly once on every rendered template",
+  "previews": 5
+}

@@ -1,9 +1,22 @@
-<html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Store</title>
+    {% include 'store/includes/theme_head.html' %}
+</head>
     <body>
-        <form action="logcode">
-            <input type="text" name="a1">
-            <input type="text" name="a2">
+<nav class="store-page-toolbar" aria-label="Account and home">
+  <a class="store-home-link" href="{% url 'store_home' %}">Home</a>
+  {% load store_ui %}{% store_account_menu %}
+</nav>
+        <form method="POST" action="/store/logcode">
+            {% csrf_token %}
+            <input type="email" name="a1" aria-label="Email address" autocomplete="email" required>
+            <input type="password" name="a2" aria-label="Password" autocomplete="current-password" required>
             <input type="submit">
         </form>
-    </body>
+      {% load store_ui %}{% store_account_panels %}
+</body>
 </html>

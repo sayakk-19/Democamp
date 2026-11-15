@@ -1,0 +1,73 @@
+/* Keep the club logo and controls on the same baseline. */
+body.main-layout > header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 12px 0;
+  background: var(--store-surface, white);
+  box-shadow: 0 2px 10px #00000014;
+}
+body.main-layout header .row.d_flex { flex-wrap: nowrap; align-items: center; }
+body.main-layout header .row > .col-sm-3 { flex: 0 1 160px; max-width: 160px; min-width: 0; }
+body.main-layout header .row > .col-sm-9 { flex: 1; max-width: none; min-width: 0; }
+body.main-layout header .logo { float: none; width: auto; max-width: 144px; }
+body.main-layout header ul.email {
+  display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap;
+  gap: 12px; float: none; padding: 0; margin: 0;
+}
+body.main-layout header ul.email li { display: flex; align-items: center; padding: 0; }
+body.main-layout header .openbtn { display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 0; }
+body.main-layout header .store-search-trigger { display: flex; align-items: center; justify-content: center; height: 44px; }
+body.main-layout .sidepanel { z-index: 1100; max-width: 100vw; }
+/* The blog uses a Bootstrap navbar instead of the club header. */
+body > nav.navbar:not(.fixed-top) { position: sticky; top: 0; z-index: 1000; }
+
+/* The product navbar must wrap before its links run out of room. */
+.mac-nav-container { flex-wrap: wrap; }
+.mac-search, .mac-search input { min-width: 0; }
+.mac-search button { flex-shrink: 0; }
+.mac-nav-actions { flex-wrap: wrap; min-width: 0; max-width: 100%; }
+.mac-dropdown:focus-within .mac-dropdown-menu { display: block; }
+
+/* Scope these rules to shop product carousels; retain horizontal spacing. */
+.shop-fixed-header .carousel-item > .col-md-3 { vertical-align: top; margin-bottom: 24px; }
+.shop-fixed-header .carousel-item .card { width: 100% !important; max-width: 100%; }
+.shop-fixed-header .carousel-item .card-body { min-width: 0; width: 100%; overflow-wrap: anywhere; }
+.shop-fixed-header .carousel-item .btn { margin-top: 6px; white-space: normal; }
+
+@media (max-width: 991px) {
+  .shop-fixed-header .carousel-item > .col-md-3 { width: 50%; max-width: 50%; }
+  .mac-search { flex-basis: 100%; order: 3; }
+}
+@media (max-width: 575px) {
+  body.main-layout header .row > .col-sm-3 { flex-basis: 120px; padding-right: 0; }
+  body.main-layout header ul.email { gap: 6px; }
+  body.main-layout header a.store-account-signup { padding: 9px 12px; font-size: 14px; }
+  body.main-layout header .logo img { max-width: 100%; }
+  body.main-layout .banner_main { margin: 0; }
+  body.main-layout .club { display: grid; background: #1f1d47; }
+  body.main-layout .club figure, body.main-layout .club .poa_t { grid-area: 1 / 1; }
+  body.main-layout .club figure img { width: 100%; height: 100%; object-fit: cover; }
+  body.main-layout .club .poa_t { position: relative; top: auto; padding: 32px 16px; align-self: center; }
+  body.main-layout .club h1 { font-size: clamp(26px, 8vw, 37px); line-height: 1.2; }
+  body.main-layout .footbol { margin-top: 0; }
+  body.main-layout .foot_img { width: 100%; max-width: 260px; }
+  body.main-layout .foot_img img { max-width: 100%; object-fit: contain; }
+  body.main-layout .club_btn { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  body.main-layout .club_btn .read_more { margin: 0; max-width: 100%; }
+  body.main-layout .conta ul { display: flex; flex-wrap: wrap; gap: 12px; }
+  body.main-layout .conta ul li { padding: 0; overflow-wrap: anywhere; }
+  .shop-fixed-header .carousel-item > .col-md-3 { width: 100%; max-width: 100%; margin-left: 0; }
+  .shop-fixed-header .carousel-item .card { max-width: 360px; margin-inline: auto; }
+  .shop-fixed-header .jumbotron .display-3 { font-size: clamp(32px, 10vw, 56px); overflow-wrap: anywhere; }
+  .mac-nav-container { padding: 10px 12px; gap: 12px; }
+  .mac-nav-actions { margin-left: 0; gap: 4px; }
+  .mac-nav-item { padding: 10px 8px; }
+  .mac-dropdown-menu { right: auto; left: 0; width: min(260px, 80vw); }
+  .product-main, .product-gallery { min-width: 0; }
+  .product-gallery, .product-info { padding: 16px; }
+  .thumbnail-list { flex-wrap: wrap; }
+  .main-image-box { min-height: 260px; }
+  .main-image-box img { max-height: 320px; }
+  .product-actions { grid-template-columns: 1fr; }
+}

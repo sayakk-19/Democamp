@@ -1,0 +1,40 @@
+{
+  "result": "PASS",
+  "checks": [
+    "focus",
+    "live suggestions",
+    "arrow navigation",
+    "stale request protection",
+    "typo correction",
+    "no results",
+    "network fallback",
+    "clear",
+    "night mode",
+    "mobile widths",
+    "Escape",
+    "focus restoration",
+    "slash shortcut",
+    "Enter navigation"
+  ],
+  "mobiles": [
+    {
+      "width": 390,
+      "left": 18,
+      "right": 372,
+      "dialogWidth": 352,
+      "contentWidth": 352
+    },
+    {
+      "width": 360,
+      "left": 18,
+      "right": 342,
+      "dialogWidth": 322,
+      "contentWidth": 322
+    }
+  ],
+  "header": {
+    "logoRight": 159,
+    "controlsLeft": 161.015625
+  },
+  "screenshots": "C:\\Users\\Sayak\\Desktop\\Test\\football - Copy\\store\\preview"
+}

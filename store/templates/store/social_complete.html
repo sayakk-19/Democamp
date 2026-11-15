@@ -1,0 +1,41 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Complete social sign-in</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  {% include 'store/includes/theme_head.html' %}
+</head>
+<body>
+  <main class="container py-4" style="max-width:760px">
+    <a href="{% url 'store_login' %}">Back to log in</a>
+    <h1 class="h3 mt-4">Continue with {{ provider_label }}</h1>
+    <p>Your provider account has been verified. Complete your club membership, or connect an account you already have.</p>
+    <section class="card p-4 my-4" aria-labelledby="new-member-title">
+      <h2 id="new-member-title" class="h5">New club member</h2>
+      <p>Administrator approval is still required. No club password is needed for social sign-in.</p>
+      <form method="post">{% csrf_token %}<input type="hidden" name="action" value="create">
+        {{ form.non_field_errors }}
+        <div class="row">
+          {% for field in form %}<div class="form-group col-md-6">
+            {{ field.label_tag }}{{ field }}
+            {% for error in field.errors %}<div class="text-danger small" role="alert">{{ error }}</div>{% endfor %}
+          </div>{% endfor %}
+        </div>
+        <button type="submit" class="btn btn-success">Create club account</button>
+      </form>
+    </section>
+    <section class="card p-4" aria-labelledby="existing-member-title">
+      <h2 id="existing-member-title" class="h5">Already registered?</h2>
+      <p>Confirm your club password once to connect {{ provider_label }}. Future sign-ins can use the logo directly.</p>
+      <form method="post">{% csrf_token %}<input type="hidden" name="action" value="link">
+        <div class="form-group"><label for="link-email">Club email</label><input id="link-email" type="email" name="email" value="{{ suggested_email }}" class="form-control" required autocomplete="username"></div>
+        <div class="form-group"><label for="link-password">Club password</label><input id="link-password" type="password" name="password" class="form-control" required autocomplete="current-password"></div>
+        {% if link_error %}<p class="text-danger" role="alert">{{ link_error }}</p>{% endif %}
+        <button type="submit" class="btn btn-primary">Connect and log in</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

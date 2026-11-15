@@ -22,8 +22,9 @@ class Register(models.Model):
             message='Phone number must contain only digits.'
         )
     ])
-    pwd = models.CharField(max_length=80)
-    reenter_pwd = models.CharField(max_length=80)
+    pwd = models.CharField(max_length=100)
+    reenter_pwd = models.CharField(max_length=100)
+    pwd_hash = models.CharField(max_length=100, default= "hello")
     age = models.IntegerField(validators=[
         MinValueValidator(7, message="You must be at least 7 years old."),
         MaxValueValidator(50, message="Age cannot be greater than 50.")
@@ -34,4 +35,17 @@ class Register(models.Model):
         db_table="Register"
     def __str__(self):
         return self.name
+
+
+class SocialIdentity(models.Model):
+    """A provider's stable account ID linked to an existing club membership."""
+
+    id = models.BigAutoField(primary_key=True)
+    account = models.ForeignKey(Register, on_delete=models.CASCADE, related_name='social_identities')
+    provider = models.CharField(max_length=16, choices=[('google', 'Google'), ('github', 'GitHub'), ('x', 'X')])
+    subject = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['provider', 'subject'], name='store_social_provider_subject')]
 
