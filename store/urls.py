@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 from . import social_auth
 from . import search as club_search
+from django.contrib.auth import views as auth_views
+
 urlpatterns = [
     path('search/', club_search.search_results, name='store_search'),
     path('search/suggestions/', club_search.suggestions, name='store_search_suggestions'),
@@ -56,4 +58,9 @@ urlpatterns = [
     path('account/delete', views.account_delete, name='store_account_delete'),
     path('welcome', views.welcome, name='store_welcome'),
     path('welcome.html', views.welcome),
+
+    path('reset_password/', auth_views.PasswordResetView.as_view(), name='reset_password'),
+    path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('reset_password/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete')
 ]

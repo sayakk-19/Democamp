@@ -49,3 +49,15 @@ class SocialIdentity(models.Model):
     class Meta:
         constraints = [models.UniqueConstraint(fields=['provider', 'subject'], name='store_social_provider_subject')]
 
+from django.utils import timezone
+
+class EmailOTP(models.Model):
+    account = models.ForeignKey('Register', on_delete=models.CASCADE)
+    code_hash = models.CharField(max_length=128)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expires_at = models.DateTimeField()
+    attempts = models.PositiveSmallIntegerField(default=0)
+    used = models.BooleanField(default=False)
+
+    def is_expired(self):
+        return timezone.now() > self.expires_at

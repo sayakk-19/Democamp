@@ -17,6 +17,8 @@ from store.registration_validation import (
     range_errors,
     registration_limits,
 )
+from .helpers import store_login_required
+
 # Create your views here.
 def test(request):
     return HttpResponse('Testing the page...')
@@ -232,12 +234,15 @@ def logcode(request):
         return render(request,'login.html')
 
 
+@store_login_required
 def welcome(request):
     return render(request, 'welcome.html')
+
 @staff_member_required
 def edit(request, id):
     regi = Register.objects.get(id=id)
     return render(request, 'edit.html', {'a' : regi})
+
 @staff_member_required
 @require_POST
 def update(request, id):
@@ -265,6 +270,7 @@ def delete(request, id):
 def approv(request):
     regi = Register.objects.filter(appr = 0).values()
     return render(request, 'approv.html', {'a':regi})
+
 @staff_member_required
 @require_POST
 def apr(request, id):
@@ -276,5 +282,36 @@ def apr(request, id):
 @staff_member_required
 def admin(request):
     regi = Register.objects.all()
-    return render(request, 'admin_panel.html', {'a':regi})           
-    
+    return render(request, 'admin_panel.html', {'a':regi})
+
+import secrets
+from datetime import timedelta
+from django.core.mail import send_mail
+from django.utils import timezone
+
+def send_otp(account):
+    code = f"{secrets.randbelow(10**6):06d}"
+    EmailOTP.objects.filter(account=account, used=False).update(used=True)  # invalidate old codes
+    EmailOTP.objects.create(
+        account=account,
+        code_hash=make_password(code),
+        expires_at=timezone.now() + timedelta(minutes=5),
+    )
+    send_mail(
+        'Your verification code',
+        f'Your code is {code}. It expires in 5 minutes.',
+        None,  # uses DEFAULT_FROM_EMAIL
+        [account.email],
+    )
+
+def verify_otp(account, code):
+    otp = EmailOTP.objects.filter(account=account, used=False).order_by('-created_at').first()
+    if not otp or otp.is_expired() or otp.attempts >= 5:
+        return False
+    otp.attempts += 1
+    otp.save(update_fields=['attempts'])
+    if check_password(code, otp.code_hash):
+        otp.used = True
+        otp.save(update_fields=['used'])
+        return True
+    return False
